@@ -81,6 +81,10 @@ public class Main {
 	}
 	
 	private void onIrUpdate(float sample) {
+		if (operationMode == Mode.BackingFromCollision || operationMode == Mode.SteeringFromCollision) {
+			return;
+		}
+		
 		if (sample <= 40) {
 			float decrease = (40 - sample) * 5;
 			rightMotor.setSpeed(200 - (int)decrease);
